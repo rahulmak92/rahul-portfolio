@@ -21,7 +21,7 @@ export default function Education() {
             Education
           </p>
           <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-warm-100">
-            Academic <span className="gradient-text">foundation</span>
+            Academic <span className="gradient-text">Foundation</span>
           </h2>
         </motion.div>
 

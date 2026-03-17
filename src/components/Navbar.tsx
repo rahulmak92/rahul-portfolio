@@ -36,7 +36,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 xl:px-32 2xl:px-48 flex items-center justify-between h-16 lg:h-20">
         <a href="#" className="text-base lg:text-lg font-bold tracking-tight text-warm-200">
-          R<span className="text-accent-500">.</span>M
+          R<span className="text-accent-500">.</span>M<span className="text-accent-500">.</span>
         </a>
 
         <div className="hidden md:flex items-center gap-1">

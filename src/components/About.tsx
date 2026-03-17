@@ -22,7 +22,7 @@ const storyBeats = [
   {
     year: '2025',
     title: 'Building the Future',
-    body: 'Joined Tellen as Founding Fullstack AI Engineer. Built an AI-driven development pipeline from scratch — Slack to Linear to Cursor to Claude to GitHub to production. Led a team of 6, shipped AI products for financial reporting, and turned 15-minute bug fixes from a flex into a standard.',
+    body: 'Joined Tellen as Founding Fullstack AI Engineer. Built an AI-driven development pipeline from scratch — Slack to Linear to Cursor to Claude to GitHub to production. Shipped 5+ AI products for financial reporting and turned 15-minute bug fixes from a flex into a standard.',
   },
 ];
 

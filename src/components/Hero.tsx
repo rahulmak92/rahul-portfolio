@@ -95,10 +95,19 @@ export default function Hero() {
               className="flex flex-wrap gap-10 lg:gap-14"
             >
               {stats.map((s, i) => (
-                <div key={i}>
-                  <div className="text-3xl lg:text-4xl xl:text-5xl font-bold text-warm-100">{s.value}</div>
+                <a
+                  key={i}
+                  href={(s as any).href || '#'}
+                  className="group relative cursor-pointer"
+                >
+                  <div className="text-3xl lg:text-4xl xl:text-5xl font-bold text-warm-100 group-hover:text-accent-400 transition-colors">{s.value}</div>
                   <div className="text-xs lg:text-sm text-warm-600 uppercase tracking-widest mt-1">{s.label}</div>
-                </div>
+                  {(s as any).note && (
+                    <div className="absolute bottom-full left-0 mb-3 w-64 p-3 rounded-xl bg-warm-900 border border-warm-700/50 text-xs text-warm-400 leading-relaxed opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 shadow-xl shadow-black/30 z-50">
+                      {(s as any).note}
+                    </div>
+                  )}
+                </a>
               ))}
             </motion.div>
           </div>

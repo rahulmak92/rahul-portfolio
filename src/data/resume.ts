@@ -73,7 +73,7 @@ export const experiences = [
 
 export const education = [
   {
-    degree: 'Post Grad Program in AI and Machine Learning',
+    degree: 'Post-Grad Program in AI and Machine Learning',
     school: 'UT Austin',
     year: 'May 2023',
     portfolio: 'https://eportfolio.mygreatlearning.com/rahul-makwana',
@@ -178,8 +178,8 @@ export const skillCategories = [
 ];
 
 export const stats = [
-  { label: 'Years Experience', value: '9+' },
-  { label: 'AI Products Shipped', value: '5+' },
-  { label: 'Cost Reduction', value: '43%' },
-  { label: 'Bug-to-Fix Time', value: '15m' },
+  { label: 'Years Experience', value: '9+', href: '#experience', note: 'Since May 2016 at Antylia Scientific' },
+  { label: 'AI Products Shipped', value: '5+', href: '#experience', note: 'FootNoteAI, Workpaper AI, ChatBot, substantive testing, audit completeness' },
+  { label: 'Cost Reduction', value: '43%', href: '#experience', note: 'Calibration & non-conformance apps at Antylia Scientific (2016–2021)' },
+  { label: 'Bug-to-Fix Time', value: '15m', href: '#workflow', note: 'AI-driven pipeline: Slack → Linear → Cursor → GitHub → CodeRabbit → CI/CD' },
 ];
