@@ -30,7 +30,7 @@
 
 @layer components {
   .section-padding {
-    @apply px-6 md:px-12 lg:px-24 xl:px-32;
+    @apply px-6 md:px-12 lg:px-24 xl:px-32 2xl:px-48;
   }
 
   .gradient-text {

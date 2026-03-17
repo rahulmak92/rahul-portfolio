@@ -12,8 +12,8 @@ export default function Experience() {
   const active = experiences.find((e) => e.id === activeId)!;
 
   return (
-    <section id="experience" className="py-24 md:py-32 section-padding" ref={ref}>
-      <div className="max-w-6xl mx-auto">
+    <section id="experience" className="py-28 md:py-40 section-padding" ref={ref}>
+      <div className="max-w-7xl 2xl:max-w-[1400px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -23,7 +23,7 @@ export default function Experience() {
           <p className="text-accent-500 font-mono text-xs mb-4 tracking-[0.2em] uppercase">
             Experience
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-warm-100">
+          <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-warm-100">
             Where I&apos;ve <span className="gradient-text">made impact</span>
           </h2>
         </motion.div>
@@ -47,8 +47,8 @@ export default function Experience() {
                       : 'lg:border-l-transparent text-warm-500 hover:text-warm-300 hover:bg-warm-900/30'
                   }`}
                 >
-                  <div className="font-medium text-sm">{exp.company}</div>
-                  <div className="text-xs text-warm-600 mt-0.5">{exp.period}</div>
+                  <div className="font-medium text-sm lg:text-base">{exp.company}</div>
+                  <div className="text-xs lg:text-sm text-warm-600 mt-0.5">{exp.period}</div>
                 </button>
               ))}
             </div>
@@ -69,9 +69,9 @@ export default function Experience() {
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.25 }}
               >
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold text-warm-100 mb-1">{active.role}</h3>
-                  <p className="text-accent-400 text-sm font-medium">
+                <div className="mb-8">
+                  <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-warm-100 mb-2">{active.role}</h3>
+                  <p className="text-accent-400 text-sm lg:text-base font-medium">
                     {active.company}
                     <span className="text-warm-700 mx-2">·</span>
                     <span className="text-warm-500">{active.period}</span>
@@ -88,7 +88,7 @@ export default function Experience() {
                       initial={{ opacity: 0, x: 15 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.04 }}
-                      className="flex gap-3 text-warm-400 leading-relaxed text-[15px]"
+                      className="flex gap-3 text-warm-400 leading-relaxed text-base lg:text-lg"
                     >
                       <ChevronRight className="w-4 h-4 text-accent-500/60 mt-1 flex-shrink-0" />
                       <span>{h}</span>

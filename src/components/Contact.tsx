@@ -16,8 +16,8 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 md:py-32 section-padding" ref={ref}>
-      <div className="max-w-3xl mx-auto text-center">
+    <section id="contact" className="py-28 md:py-40 section-padding" ref={ref}>
+      <div className="max-w-4xl xl:max-w-5xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -26,10 +26,10 @@ export default function Contact() {
           <p className="text-accent-500 font-mono text-xs mb-4 tracking-[0.2em] uppercase">
             Contact
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-warm-100 mb-5">
+          <h2 className="text-3xl md:text-5xl xl:text-6xl font-bold text-warm-100 mb-6">
             Let&apos;s <span className="gradient-text">connect</span>
           </h2>
-          <p className="text-warm-500 text-base mb-14 max-w-md mx-auto leading-relaxed">
+          <p className="text-warm-500 text-base lg:text-lg mb-14 max-w-lg mx-auto leading-relaxed">
             Interested in working together or want to chat about AI,
             engineering, or building products?
           </p>
@@ -47,14 +47,14 @@ export default function Contact() {
               href={c.href}
               target={c.href.startsWith('http') ? '_blank' : undefined}
               rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="card card-hover p-5 flex items-center gap-4 group text-left"
+              className="card card-hover p-6 xl:p-8 flex items-center gap-5 group text-left"
             >
               <div className="p-2.5 rounded-xl bg-accent-500/[0.08] border border-accent-500/15 group-hover:bg-accent-500/15 transition-colors">
                 <c.icon className="w-4 h-4 text-accent-400" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-[10px] text-warm-600 uppercase tracking-[0.2em]">{c.label}</div>
-                <div className="text-warm-300 group-hover:text-warm-100 transition-colors truncate text-sm mt-0.5">
+                <div className="text-warm-300 group-hover:text-warm-100 transition-colors truncate text-sm lg:text-base mt-0.5">
                   {c.value}
                 </div>
               </div>

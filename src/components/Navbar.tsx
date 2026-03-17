@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Download } from 'lucide-react';
 
 const links = [
-  { label: 'About', href: '#about' },
+  { label: 'Story', href: '#about' },
+  { label: 'Workflow', href: '#workflow' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Education', href: '#education' },
+  { label: 'Teaching', href: '#teaching' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -32,8 +34,8 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
-        <a href="#" className="text-base font-bold tracking-tight text-warm-200">
+      <div className="max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 xl:px-32 2xl:px-48 flex items-center justify-between h-16 lg:h-20">
+        <a href="#" className="text-base lg:text-lg font-bold tracking-tight text-warm-200">
           R<span className="text-accent-500">.</span>M
         </a>
 
@@ -48,10 +50,12 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href={`mailto:r.makwana92@gmail.com`}
-            className="ml-2 text-sm px-5 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 hover:bg-accent-500/20 transition-all duration-200"
+            href="/RahulMakwana_Resume.pdf"
+            target="_blank"
+            className="ml-2 text-sm px-5 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 hover:bg-accent-500/20 transition-all duration-200 inline-flex items-center gap-2"
           >
-            Hire Me
+            <Download className="w-3.5 h-3.5" />
+            Resume
           </a>
         </div>
 
@@ -84,6 +88,14 @@ export default function Navbar() {
                   {l.label}
                 </a>
               ))}
+              <a
+                href="/RahulMakwana_Resume.pdf"
+                target="_blank"
+                className="text-accent-400 hover:text-accent-300 transition-colors py-3 text-lg inline-flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" />
+                Download Resume
+              </a>
             </div>
           </motion.div>
         )}
