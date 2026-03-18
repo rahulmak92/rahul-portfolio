@@ -6,9 +6,11 @@ import { personalInfo, stats } from '@/data/resume';
 import { MapPin, ArrowDown, Sparkles } from 'lucide-react';
 
 const floatingLogos = [
-  { src: '/logos/claude.png', alt: 'Claude', size: 44, top: '15%', right: '8%', delay: 0 },
-  { src: '/logos/cursor.png', alt: 'Cursor', size: 40, top: '70%', right: '5%', delay: 1.5 },
-  { src: '/logos/github.png', alt: 'GitHub', size: 36, top: '45%', right: '2%', delay: 3 },
+  { src: '/logos/claude.png', alt: 'Claude', size: 44, top: '10%', right: '8%', delay: 0 },
+  { src: '/logos/cursor.png', alt: 'Cursor', size: 40, top: '75%', right: '5%', delay: 1.5 },
+  { src: '/logos/github.png', alt: 'GitHub', size: 36, top: '45%', right: '1%', delay: 3 },
+  { src: '/logos/openai.svg', alt: 'OpenAI', size: 38, top: '30%', left: '-8%', delay: 0.8 },
+  { src: '/logos/coderabbit.png', alt: 'CodeRabbit', size: 36, top: '65%', left: '-6%', delay: 2.2 },
 ];
 
 export default function Hero() {
@@ -112,7 +114,7 @@ export default function Hero() {
                 <motion.div
                   key={logo.alt}
                   className="absolute z-20 hidden lg:block"
-                  style={{ top: logo.top, right: logo.right }}
+                  style={{ top: logo.top, right: (logo as any).right, left: (logo as any).left }}
                   animate={{ y: [0, -12, 0], rotate: [0, 3, 0] }}
                   transition={{ duration: 5, delay: logo.delay, repeat: Infinity, ease: 'easeInOut' }}
                 >
