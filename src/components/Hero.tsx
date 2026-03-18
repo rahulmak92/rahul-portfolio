@@ -22,7 +22,7 @@ export default function Hero() {
         <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] bg-[#D97757]/[0.03] rounded-full blur-[100px] animate-float" style={{ animationDelay: '2s' }} />
       </div>
 
-      <div className="relative z-10 max-w-7xl 2xl:max-w-[1400px] mx-auto w-full section-padding py-32 md:py-0">
+      <div className="relative z-10 max-w-7xl 2xl:max-w-[1400px] mx-auto w-full section-padding pt-32 pb-16 md:pt-28 md:pb-0">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-center">
           <div className="order-2 lg:order-1">
             <motion.h1
