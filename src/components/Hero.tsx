@@ -23,17 +23,6 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl 2xl:max-w-[1400px] mx-auto w-full section-padding py-32 md:py-0">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-center">
           <div className="order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-sm lg:text-base text-accent-400 mb-8"
-            >
-              <Sparkles className="w-4 h-4" />
-              AI-First Engineer
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -132,6 +121,17 @@ export default function Hero() {
                   </div>
                 </motion.div>
               ))}
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute -top-4 -left-4 lg:-top-5 lg:-left-5 z-30 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warm-900/90 border border-accent-500/20 backdrop-blur-sm text-sm lg:text-base text-accent-400 shadow-lg shadow-black/20"
+              >
+                <Sparkles className="w-4 h-4" />
+                AI-First Engineer
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              </motion.div>
 
               <div className="absolute -inset-1 bg-gradient-to-br from-accent-500/20 via-transparent to-[#D97757]/10 rounded-3xl blur-xl" />
               <div className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-[420px] lg:h-[520px] xl:w-[480px] xl:h-[580px] rounded-3xl overflow-hidden border border-warm-800/50">
