@@ -85,6 +85,15 @@ export const education = [
   },
 ];
 
+export const certifications = [
+  {
+    name: 'IBM AI Developer Professional Certificate',
+    issuer: 'IBM · Coursera',
+    credentialId: '54UQQJCGY4BQ',
+    pdf: '/IBM_AI_Developer_Certificate.pdf',
+  },
+];
+
 export const skillCategories = [
   {
     name: 'AI / ML',
