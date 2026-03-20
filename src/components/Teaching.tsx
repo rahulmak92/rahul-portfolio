@@ -85,15 +85,14 @@ export default function Teaching() {
 
               <a
                 href="#contact"
-                className="group flex items-start gap-3 p-4 xl:p-5 rounded-xl bg-red-500/[0.04] border border-red-500/10 hover:border-red-400/25 hover:bg-red-500/[0.08] transition-all duration-300"
+                className="group flex items-start gap-3 p-4 xl:p-5 rounded-xl border border-warm-800/60 bg-warm-900/30 hover:border-accent-500/20 transition-all duration-300"
               >
-                <span className="text-red-400 text-lg mt-0.5">&#9888;</span>
                 <div>
                   <div className="text-sm lg:text-base font-semibold text-warm-200 group-hover:text-warm-100 transition-colors">
-                    Drowning in AI slop your engineers shipped?
+                    Teams struggling with unreliable AI-assisted output?
                   </div>
                   <div className="text-xs lg:text-sm text-warm-500 mt-1">
-                    Reach out — I can audit your AI workflow, fix the guardrails, and turn hallucination-prone pipelines into reliable ones.
+                    Reach out if you want a practical review of guardrails, review habits, and delivery discipline.
                   </div>
                 </div>
               </a>

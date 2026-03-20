@@ -16,21 +16,21 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Rahul Makwana | Senior Software Engineer & AI Builder',
+  title: 'Rahul Makwana | Senior Software Engineer · Founding Full-Stack AI Engineer',
   description:
-    'Senior software engineer and AI-focused product builder. Experience across cloud applications, analytics, workflow automation, and cross-functional delivery.',
+    'Ships applied AI products and enterprise software end to end—document intelligence, workflow automation, audit and accounting workflows, and cloud-connected platforms.',
   keywords: [
     'Rahul Makwana',
     'Software Engineer',
-    'AI Engineer',
-    'Full Stack Developer',
+    'Applied AI',
+    'Full Stack',
     'Azure',
-    'Machine Learning',
+    'Document Intelligence',
   ],
   openGraph: {
-    title: 'Rahul Makwana | Senior Software Engineer & AI Builder',
+    title: 'Rahul Makwana | Senior Software Engineer · Founding Full-Stack AI Engineer',
     description:
-      'Senior software engineer and AI-focused product builder with experience across cloud applications, analytics, and workflow automation.',
+      'Applied AI products and enterprise systems—document intelligence, workflow automation, and regulated domains—with ownership from architecture through production.',
     type: 'website',
   },
 };

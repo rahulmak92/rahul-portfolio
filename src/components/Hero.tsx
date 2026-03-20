@@ -2,58 +2,51 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { personalInfo, stats } from '@/data/resume';
-import { MapPin, ArrowDown, Sparkles } from 'lucide-react';
-
-const floatingLogos = [
-  { src: '/logos/claude.png', alt: 'Claude', size: 44, top: '10%', right: '8%', delay: 0 },
-  { src: '/logos/cursor.png', alt: 'Cursor', size: 40, top: '75%', right: '5%', delay: 1.5 },
-  { src: '/logos/github.png', alt: 'GitHub', size: 36, top: '45%', right: '1%', delay: 3 },
-  { src: '/logos/openai.svg', alt: 'OpenAI', size: 38, top: '30%', left: '-8%', delay: 0.8 },
-  { src: '/logos/coderabbit.png', alt: 'CodeRabbit', size: 36, top: '65%', left: '-6%', delay: 2.2 },
-];
+import { personalInfo } from '@/data/resume';
+import { hero, heroStats, siteLinks } from '@/content/portfolio';
+import { MapPin, ArrowDown, Calendar } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative flex items-center overflow-hidden py-16 md:py-20 lg:py-24 min-h-0">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-500/[0.04] rounded-full blur-[120px] animate-float" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-600/[0.03] rounded-full blur-[100px] animate-float" style={{ animationDelay: '4s' }} />
-        <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] bg-[#D97757]/[0.03] rounded-full blur-[100px] animate-float" style={{ animationDelay: '2s' }} />
+        <div
+          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-600/[0.03] rounded-full blur-[100px] animate-float"
+          style={{ animationDelay: '4s' }}
+        />
       </div>
 
-      <div className="relative z-10 max-w-7xl 2xl:max-w-[1400px] mx-auto w-full section-padding pt-32 pb-16 md:pt-28 md:pb-0">
+      <div className="relative z-10 max-w-7xl 2xl:max-w-[1400px] mx-auto w-full section-padding pt-24 pb-12 md:pt-28 md:pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-center">
           <div className="order-2 lg:order-1">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold tracking-tight text-warm-100 leading-[1.05] mb-6 lg:mb-8"
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-warm-100 leading-[1.12] mb-5 text-balance max-w-xl"
             >
-              I build with AI.
-              <br />
-              <span className="gradient-text">Not around it.</span>
+              {hero.headline}
             </motion.h1>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-warm-400 max-w-xl text-base lg:text-lg xl:text-xl leading-relaxed mb-5"
+              className="text-warm-400 max-w-xl text-[15px] sm:text-base leading-relaxed mb-5 space-y-2"
             >
-              Senior engineer who turned AI from a buzzword into a shipping pipeline.
-              Claude, Cursor, and GitHub Actions aren&apos;t just tools in my stack —
-              they&apos;re teammates.
-            </motion.p>
+              {hero.subheadingLines.map((line, i) => (
+                <p key={i}>{line}</p>
+              ))}
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-3 text-sm lg:text-base text-warm-600 mb-10 lg:mb-12"
+              className="flex items-center gap-3 text-sm text-warm-600 mb-8"
             >
-              <MapPin className="w-4 h-4 text-accent-500/60" />
+              <MapPin className="w-4 h-4 text-accent-500/60 flex-shrink-0" />
               {personalInfo.location}
             </motion.div>
 
@@ -61,21 +54,31 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap gap-4 mb-14 lg:mb-16"
+              className="flex flex-wrap gap-3 sm:gap-4 mb-10"
             >
               <a
                 href="#contact"
                 className="group px-8 py-3.5 lg:px-10 lg:py-4 rounded-full bg-accent-500 hover:bg-accent-400 text-warm-950 font-semibold text-sm lg:text-base transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/20"
               >
-                Let&apos;s Talk
-                <span className="inline-block ml-1 group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+                {hero.ctaPrimary}
+                <span className="inline-block ml-1 group-hover:translate-x-0.5 transition-transform">→</span>
               </a>
               <a
-                href="/RahulMakwana_Resume.pdf"
+                href={siteLinks.resumePdf}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-3.5 lg:px-10 lg:py-4 rounded-full border border-warm-700 hover:border-warm-500 text-warm-300 hover:text-warm-100 font-medium text-sm lg:text-base transition-all duration-300"
               >
-                Download Resume
+                {hero.ctaSecondary}
+              </a>
+              <a
+                href={siteLinks.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 lg:px-10 lg:py-4 rounded-full border border-warm-700 hover:border-accent-500/40 text-warm-300 hover:text-warm-100 font-medium text-sm lg:text-base transition-all duration-300"
+              >
+                <Calendar className="w-4 h-4 text-accent-500/80" />
+                {hero.ctaCalendly}
               </a>
             </motion.div>
 
@@ -83,69 +86,87 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="flex flex-wrap gap-10 lg:gap-14"
+              className="flex flex-wrap gap-x-10 gap-y-8 lg:gap-x-8 lg:gap-y-10"
             >
-              {stats.map((s, i) => (
-                <a
-                  key={i}
-                  href={(s as any).href || '#'}
-                  className="group relative cursor-pointer"
-                >
-                  <div className="text-3xl lg:text-4xl xl:text-5xl font-bold text-warm-100 group-hover:text-accent-400 transition-colors">{s.value}</div>
-                  <div className="text-xs lg:text-sm text-warm-600 uppercase tracking-widest mt-1">{s.label}</div>
-                  {(s as any).note && (
-                    <div className="absolute bottom-full left-0 mb-3 w-64 p-3 rounded-xl bg-warm-900 border border-warm-700/50 text-xs text-warm-400 leading-relaxed opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 shadow-xl shadow-black/30 z-50">
-                      {(s as any).note}
-                    </div>
-                  )}
-                </a>
-              ))}
+              {heroStats.map((s, i) => {
+                const isSplit = 'split' in s;
+                return (
+                  <a
+                    key={i}
+                    href={s.href}
+                    className={`group relative cursor-pointer ${isSplit ? 'max-w-[min(100%,20rem)]' : 'max-w-[11rem]'}`}
+                  >
+                    {isSplit ? (
+                      <>
+                        <div className="rounded-2xl border border-warm-800/70 bg-warm-950/50 px-4 py-3 sm:px-5 sm:py-4 flex items-stretch gap-0 sm:gap-1">
+                          {s.split.map((m, j) => (
+                            <div
+                              key={j}
+                              className={`flex-1 min-w-0 flex flex-col items-center justify-center text-center px-2 ${
+                                j === 0 ? 'border-r border-warm-800/60 pr-3 sm:pr-4' : 'pl-3 sm:pl-4'
+                              }`}
+                            >
+                              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-warm-50 tabular-nums tracking-tight group-hover:text-accent-400 transition-colors">
+                                {m.value}
+                              </span>
+                              <span className="text-[10px] sm:text-[11px] text-warm-400 mt-1.5 leading-tight max-w-[6rem]">
+                                {m.sub}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="text-[10px] sm:text-[11px] text-warm-500 uppercase tracking-[0.12em] mt-2.5 font-medium">
+                          {s.label}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-2xl lg:text-3xl xl:text-4xl font-bold text-warm-100 group-hover:text-accent-400 transition-colors leading-tight tabular-nums">
+                          {'value' in s ? s.value : ''}
+                        </div>
+                        <div className="text-[10px] lg:text-xs text-warm-500 uppercase tracking-wider mt-1.5 leading-snug">
+                          {s.label}
+                        </div>
+                      </>
+                    )}
+                    {s.note && (
+                      <div className="absolute bottom-full left-0 mb-3 w-64 max-w-[85vw] p-3 rounded-xl bg-warm-900 border border-warm-700/50 text-xs text-warm-400 leading-relaxed opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 shadow-xl shadow-black/30 z-50">
+                        {s.note}
+                      </div>
+                    )}
+                  </a>
+                );
+              })}
             </motion.div>
           </div>
 
           <motion.div
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="relative">
-              {floatingLogos.map((logo) => (
-                <motion.div
-                  key={logo.alt}
-                  className="absolute z-20 hidden lg:block"
-                  style={{ top: logo.top, right: (logo as any).right, left: (logo as any).left }}
-                  animate={{ y: [0, -12, 0], rotate: [0, 3, 0] }}
-                  transition={{ duration: 5, delay: logo.delay, repeat: Infinity, ease: 'easeInOut' }}
-                >
-                  <div className="p-3 rounded-xl bg-warm-900/80 border border-warm-700/40 backdrop-blur-sm shadow-lg shadow-black/20">
-                    <Image src={logo.src} alt={logo.alt} width={logo.size} height={logo.size} className="object-contain" />
-                  </div>
-                </motion.div>
-              ))}
-
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute -top-4 -left-4 lg:-top-5 lg:-left-5 z-30 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warm-900/90 border border-accent-500/20 backdrop-blur-sm text-sm lg:text-base text-accent-400 shadow-lg shadow-black/20"
+                transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute -top-3 -left-3 lg:-top-4 lg:-left-4 z-30 inline-flex items-center px-3 py-1.5 rounded-lg bg-warm-900/95 border border-warm-700/50 backdrop-blur-sm text-xs lg:text-sm text-warm-300 shadow-lg shadow-black/20"
               >
-                <Sparkles className="w-4 h-4" />
-                AI-First Engineer
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                {hero.photoBadge}
               </motion.div>
 
-              <div className="absolute -inset-1 bg-gradient-to-br from-accent-500/20 via-transparent to-[#D97757]/10 rounded-3xl blur-xl" />
-              <div className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-[420px] lg:h-[520px] xl:w-[480px] xl:h-[580px] rounded-3xl overflow-hidden border border-warm-800/50">
+              <div className="absolute -inset-1 bg-gradient-to-br from-accent-500/15 via-transparent to-[#D97757]/10 rounded-3xl blur-xl" />
+              <div className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-[400px] lg:h-[500px] xl:w-[460px] xl:h-[560px] rounded-3xl overflow-hidden border border-warm-800/50">
                 <Image
                   src="/profile.jpg"
                   alt="Rahul Makwana"
                   fill
                   className="object-cover object-top"
                   priority
-                  sizes="(max-width: 768px) 320px, (max-width: 1280px) 420px, 480px"
+                  sizes="(max-width: 768px) 320px, (max-width: 1280px) 400px, 460px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-warm-950/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-warm-950/50 via-transparent to-transparent" />
               </div>
             </div>
           </motion.div>
@@ -155,12 +176,12 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
+        transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
       >
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2.5, repeat: Infinity }}>
-          <ArrowDown className="w-5 h-5 text-warm-700" />
-        </motion.div>
+        <motion.a href="#proof" animate={{ y: [0, 8, 0] }} transition={{ duration: 2.5, repeat: Infinity }} className="text-warm-700 hover:text-warm-500">
+          <ArrowDown className="w-5 h-5" />
+        </motion.a>
       </motion.div>
     </section>
   );

@@ -2,79 +2,88 @@
 
 import { motion } from 'framer-motion';
 import { personalInfo } from '@/data/resume';
+import { contactCopy, siteLinks } from '@/content/portfolio';
 import { useInView } from '@/hooks/useInView';
-import { Mail, Phone, MapPin, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Mail, Linkedin, FileDown, Calendar, Phone } from 'lucide-react';
 
 export default function Contact() {
-  const { ref, isInView } = useInView(0.2);
+  const { ref, isInView } = useInView(0.15);
 
-  const contactLinks = [
-    { icon: Mail, label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
-    { icon: Phone, label: 'Phone', value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/[^\d+]/g, '')}` },
-    { icon: MapPin, label: 'Location', value: personalInfo.location, href: '#' },
-    { icon: Linkedin, label: 'LinkedIn', value: 'rahulmakwana1', href: personalInfo.linkedin },
+  const links = [
+    {
+      icon: Mail,
+      label: 'Email',
+      value: personalInfo.email,
+      href: `mailto:${personalInfo.email}`,
+    },
+    {
+      icon: Phone,
+      label: 'Phone',
+      value: personalInfo.phone,
+      href: `tel:${personalInfo.phone.replace(/[^\d+]/g, '')}`,
+    },
+    {
+      icon: Linkedin,
+      label: 'LinkedIn',
+      value: 'linkedin.com/in/rahulmakwana1',
+      href: personalInfo.linkedin,
+      external: true,
+    },
+    {
+      icon: FileDown,
+      label: 'Resume',
+      value: 'PDF',
+      href: siteLinks.resumePdf,
+      external: true,
+    },
+    {
+      icon: Calendar,
+      label: 'Book time',
+      value: 'Calendly',
+      href: siteLinks.calendly,
+      external: true,
+    },
   ];
 
   return (
-    <section id="contact" className="py-28 md:py-40 section-padding" ref={ref}>
-      <div className="max-w-4xl xl:max-w-5xl mx-auto text-center">
+    <section id="contact" className="py-24 md:py-36 section-padding border-t border-warm-800/40" ref={ref}>
+      <div className="max-w-3xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 32 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.65 }}
+          className="mb-10"
         >
-          <p className="text-accent-500 font-mono text-xs mb-4 tracking-[0.2em] uppercase">
-            Contact
-          </p>
-          <h2 className="text-3xl md:text-5xl xl:text-6xl font-bold text-warm-100 mb-6">
-            Let&apos;s <span className="gradient-text">connect</span>
-          </h2>
-          <p className="text-warm-500 text-base lg:text-lg mb-14 max-w-lg mx-auto leading-relaxed">
-            Interested in working together or want to chat about AI,
-            engineering, or building products?
-          </p>
+          <p className="text-accent-500 font-mono text-xs mb-3 tracking-[0.2em] uppercase">{contactCopy.kicker}</p>
+          <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-warm-100 mb-4">{contactCopy.title}</h2>
+          <p className="text-warm-400 text-lg leading-relaxed mb-8">{contactCopy.intro}</p>
+          <p className="text-warm-500 text-sm md:text-base leading-relaxed border-l-2 border-warm-800 pl-4">{contactCopy.targeting}</p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="grid sm:grid-cols-2 gap-3 mb-12"
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
         >
-          {contactLinks.map((c, i) => (
+          {links.map((c) => (
             <a
-              key={i}
+              key={c.label}
               href={c.href}
-              target={c.href.startsWith('http') ? '_blank' : undefined}
-              rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="card card-hover p-6 xl:p-8 flex items-center gap-5 group text-left"
+              target={c.external ? '_blank' : undefined}
+              rel={c.external ? 'noopener noreferrer' : undefined}
+              className="flex-1 flex items-center gap-4 rounded-xl border border-warm-800/60 bg-warm-900/30 px-5 py-4 hover:border-accent-500/25 hover:bg-warm-900/50 transition-colors group"
             >
-              <div className="p-2.5 rounded-xl bg-accent-500/[0.08] border border-accent-500/15 group-hover:bg-accent-500/15 transition-colors">
+              <div className="p-2.5 rounded-lg bg-accent-500/[0.08] border border-accent-500/10">
                 <c.icon className="w-4 h-4 text-accent-400" />
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-[10px] text-warm-600 uppercase tracking-[0.2em]">{c.label}</div>
-                <div className="text-warm-300 group-hover:text-warm-100 transition-colors truncate text-sm lg:text-base mt-0.5">
-                  {c.value}
-                </div>
+              <div className="text-left min-w-0">
+                <div className="text-[10px] uppercase tracking-widest text-warm-600">{c.label}</div>
+                <div className="text-warm-200 text-sm font-medium truncate group-hover:text-warm-100">{c.value}</div>
               </div>
-              {c.href !== '#' && (
-                <ArrowUpRight className="w-3.5 h-3.5 text-warm-700 group-hover:text-accent-400 transition-colors" />
-              )}
             </a>
           ))}
         </motion.div>
-
-        <motion.a
-          href={`mailto:${personalInfo.email}`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-accent-500 hover:bg-accent-400 text-warm-950 font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/20"
-        >
-          <Mail className="w-4 h-4" />
-          Say Hello
-        </motion.a>
       </div>
     </section>
   );
