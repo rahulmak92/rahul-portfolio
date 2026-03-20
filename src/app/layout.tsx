@@ -15,10 +15,14 @@ const jetbrains = JetBrains_Mono({
   display: 'swap',
 });
 
+const title = 'Rahul Makwana | Senior Software Engineer · Founding Full-Stack AI Engineer';
+const description =
+  'Ships applied AI products and enterprise software end to end—document intelligence, workflow automation, audit and accounting workflows, and cloud-connected platforms.';
+
 export const metadata: Metadata = {
-  title: 'Rahul Makwana | Senior Software Engineer · Founding Full-Stack AI Engineer',
-  description:
-    'Ships applied AI products and enterprise software end to end—document intelligence, workflow automation, audit and accounting workflows, and cloud-connected platforms.',
+  metadataBase: new URL('https://rahul-portfolio-neon.vercel.app'),
+  title,
+  description,
   keywords: [
     'Rahul Makwana',
     'Software Engineer',
@@ -27,11 +31,20 @@ export const metadata: Metadata = {
     'Azure',
     'Document Intelligence',
   ],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Rahul Makwana | Senior Software Engineer · Founding Full-Stack AI Engineer',
-    description:
-      'Applied AI products and enterprise systems—document intelligence, workflow automation, and regulated domains—with ownership from architecture through production.',
+    title,
+    description,
     type: 'website',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: title }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: ['/og.png'],
   },
 };
 

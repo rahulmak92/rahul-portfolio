@@ -39,14 +39,6 @@ export default function Skills() {
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-10 md:mt-12 text-warm-500 text-sm md:text-base leading-relaxed max-w-3xl border-l-2 border-warm-800 pl-4"
-        >
-          {skillsAndDomains.deliveryNote}
-        </motion.p>
       </div>
     </section>
   );

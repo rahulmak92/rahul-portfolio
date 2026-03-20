@@ -37,7 +37,7 @@ export default function Teaching() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-sm text-emerald-400 mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary-500/10 border border-secondary-500/20 text-sm text-secondary-400 mb-6">
               <Users className="w-3.5 h-3.5" />
               Beyond the Day Job
             </div>
@@ -45,26 +45,20 @@ export default function Teaching() {
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-warm-100 leading-tight mb-6">
               Teaching engineers to
               <br />
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary-400 to-secondary-300 bg-clip-text text-transparent">
                 build with AI, not fight it
               </span>
             </h2>
 
             <div className="space-y-4 text-warm-400 leading-relaxed text-base lg:text-lg">
               <p>
-                As a hobby, I mentor emerging engineers on adopting AI into their daily
-                development — not as a novelty, but as a reliable, controlled part of
-                their workflow.
+                I mentor engineers on adopting AI into daily development&mdash;not as a
+                novelty, but as a reliable, controlled part of their workflow.
               </p>
               <p>
                 Most developers either blindly trust AI output or avoid it entirely.
-                I teach the middle path: how to set up rules, constraints, and validation
-                layers that let you move fast without sacrificing quality.
-              </p>
-              <p className="text-warm-500">
-                The goal isn&apos;t to replace engineering judgment — it&apos;s to amplify it.
-                When your IDE environment is properly configured, AI stops hallucinating
-                and starts shipping.
+                I teach the middle path: rules, constraints, and validation layers that
+                let you move fast without sacrificing quality.
               </p>
             </div>
 
@@ -115,8 +109,8 @@ export default function Teaching() {
                 transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
                 className="card card-hover p-6 xl:p-8 group"
               >
-                <div className="p-2.5 rounded-lg bg-emerald-500/[0.08] border border-emerald-500/15 w-fit mb-3 group-hover:bg-emerald-500/15 transition-colors">
-                  <t.icon className="w-4 h-4 text-emerald-400" />
+                <div className="p-2.5 rounded-lg bg-secondary-500/[0.08] border border-secondary-500/15 w-fit mb-3 group-hover:bg-secondary-500/15 transition-colors">
+                  <t.icon className="w-4 h-4 text-secondary-400" />
                 </div>
                 <h3 className="text-sm lg:text-base font-semibold text-warm-200 mb-2">
                   {t.title}

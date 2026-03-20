@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroicons/react": "^2.1.5",
     "@vercel/analytics": "^2.0.1",
     "framer-motion": "^11.11.0",
     "lucide-react": "^0.447.0",

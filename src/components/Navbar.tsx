@@ -1,30 +1,66 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Calendar } from 'lucide-react';
 import { siteLinks } from '@/content/portfolio';
 
 const links = [
-  { label: 'Proof', href: '#proof' },
-  { label: 'Built', href: '#work' },
+  { label: 'Work', href: '#work' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Ship', href: '#how-i-ship' },
-  { label: 'Story', href: '#story' },
   { label: 'Teaching', href: '#teaching' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setScrolled(window.scrollY > 50));
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(raf);
+    };
   }, []);
+
+  useEffect(() => {
+    const ids = links.map((l) => l.href.slice(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) {
+          const top = visible.reduce((a, b) =>
+            a.boundingClientRect.top < b.boundingClientRect.top ? a : b
+          );
+          setActiveSection(top.target.id);
+        }
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   return (
     <motion.nav
@@ -45,7 +81,11 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="px-2.5 py-2 text-xs text-warm-500 hover:text-warm-200 rounded-full hover:bg-warm-800/30 transition-all duration-200"
+              className={`px-2.5 py-2 text-xs rounded-full hover:bg-warm-800/30 transition-all duration-200 ${
+                activeSection === l.href.slice(1)
+                  ? 'text-accent-400 bg-accent-500/[0.08]'
+                  : 'text-warm-500 hover:text-warm-200'
+              }`}
             >
               {l.label}
             </a>
@@ -54,6 +94,7 @@ export default function Navbar() {
             href={siteLinks.calendly}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Book time (opens in new tab)"
             className="ml-1 text-xs px-3 py-2 rounded-full border border-warm-700/80 text-warm-400 hover:text-warm-200 hover:border-warm-500 transition-all duration-200 inline-flex items-center gap-1.5"
           >
             <Calendar className="w-3.5 h-3.5" />
@@ -63,6 +104,7 @@ export default function Navbar() {
             href={siteLinks.resumePdf}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Download resume (opens in new tab)"
             className="ml-1 text-xs px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 hover:bg-accent-500/20 transition-all duration-200 inline-flex items-center gap-2"
           >
             <Download className="w-3.5 h-3.5" />
@@ -74,6 +116,8 @@ export default function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
           className="xl:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           <span
             className={`block w-5 h-0.5 bg-warm-300 transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[4px]' : ''}`}
@@ -87,6 +131,8 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-menu"
+            role="menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -97,8 +143,13 @@ export default function Navbar() {
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-warm-400 hover:text-warm-100 transition-colors py-3 text-lg"
+                  role="menuitem"
+                  onClick={closeMobile}
+                  className={`transition-colors py-3 text-lg ${
+                    activeSection === l.href.slice(1)
+                      ? 'text-accent-400'
+                      : 'text-warm-400 hover:text-warm-100'
+                  }`}
                 >
                   {l.label}
                 </a>
@@ -107,6 +158,8 @@ export default function Navbar() {
                 href={siteLinks.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
+                role="menuitem"
+                aria-label="Book time with me (opens in new tab)"
                 className="text-warm-400 hover:text-warm-100 transition-colors py-3 text-lg inline-flex items-center gap-2"
               >
                 <Calendar className="w-4 h-4" />
@@ -116,6 +169,8 @@ export default function Navbar() {
                 href={siteLinks.resumePdf}
                 target="_blank"
                 rel="noopener noreferrer"
+                role="menuitem"
+                aria-label="Download resume (opens in new tab)"
                 className="text-accent-400 hover:text-accent-300 transition-colors py-3 text-lg inline-flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />

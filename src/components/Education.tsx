@@ -47,6 +47,7 @@ export default function Education() {
                         href={entry.portfolio}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="AI/ML portfolio (opens in new tab)"
                         className="inline-flex items-center gap-1.5 text-xs text-accent-400/70 hover:text-accent-400 mt-3"
                       >
                         <ExternalLink className="w-3 h-3" />
@@ -78,6 +79,7 @@ export default function Education() {
                     href={entry.pdf}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="View certificate (opens in new tab)"
                     className="inline-flex items-center gap-1.5 text-xs text-blue-400/80 hover:text-blue-400 mt-3"
                   >
                     <FileText className="w-3.5 h-3.5" />

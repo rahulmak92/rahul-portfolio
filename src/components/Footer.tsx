@@ -13,6 +13,7 @@ export default function Footer() {
             href={personalInfo.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn (opens in new tab)"
             className="text-xs text-warm-700 hover:text-accent-400 transition-colors"
           >
             LinkedIn
