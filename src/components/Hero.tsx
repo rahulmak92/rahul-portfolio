@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { personalInfo } from '@/data/resume';
 import { hero, heroStats, proofAtGlance, siteLinks } from '@/content/portfolio';
-import { MapPin, ArrowDown, Calendar } from 'lucide-react';
+import { MapPin, ArrowDown } from 'lucide-react';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -28,9 +28,7 @@ const floatingLogos = [
     duration: 9,
     delay: 1.5,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M5 3l14 9-7 2-3 7L5 3z" />
-      </svg>
+      <img src="/logos/cursor.png" alt="Cursor IDE" className="w-full h-full rounded-[3px] object-cover" />
     ),
   },
   {
@@ -152,74 +150,33 @@ export default function Hero() {
               >
                 {hero.ctaSecondary}
               </a>
-              <a
-                href={siteLinks.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 lg:px-10 lg:py-4 rounded-full border border-warm-700 hover:border-accent-500/40 text-warm-300 hover:text-warm-100 font-medium text-sm lg:text-base transition-all duration-300"
-              >
-                <Calendar className="w-4 h-4 text-accent-500/80" />
-                {hero.ctaCalendly}
-              </a>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="flex flex-wrap gap-x-10 gap-y-8 lg:gap-x-8 lg:gap-y-10"
+              className="flex flex-wrap gap-x-10 gap-y-8 lg:gap-x-12 lg:gap-y-10"
             >
-              {heroStats.map((s, i) => {
-                const isSplit = 'split' in s;
-                return (
-                  <a
-                    key={i}
-                    href={s.href}
-                    className={`group relative cursor-pointer ${isSplit ? 'max-w-[min(100%,20rem)]' : 'max-w-[11rem]'}`}
-                  >
-                    {isSplit ? (
-                      <>
-                        <div className="rounded-2xl border border-warm-800/70 bg-warm-950/50 px-4 py-3 sm:px-5 sm:py-4 flex items-stretch gap-0 sm:gap-1">
-                          {s.split.map((m, j) => (
-                            <div
-                              key={j}
-                              className={`flex-1 min-w-0 flex flex-col items-center justify-center text-center px-2 ${
-                                j === 0
-                                  ? 'border-r border-warm-800/60 pr-3 sm:pr-4'
-                                  : 'pl-3 sm:pl-4'
-                              }`}
-                            >
-                              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-warm-50 tabular-nums tracking-tight group-hover:text-accent-400 transition-colors">
-                                {m.value}
-                              </span>
-                              <span className="text-[10px] sm:text-[11px] text-warm-400 mt-1.5 leading-tight max-w-[6rem]">
-                                {m.sub}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="text-[10px] sm:text-[11px] text-warm-500 uppercase tracking-[0.12em] mt-2.5 font-medium">
-                          {s.label}
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="text-2xl lg:text-3xl xl:text-4xl font-bold text-warm-100 group-hover:text-accent-400 transition-colors leading-tight tabular-nums">
-                          {'value' in s ? s.value : ''}
-                        </div>
-                        <div className="text-[10px] lg:text-xs text-warm-500 uppercase tracking-wider mt-1.5 leading-snug">
-                          {s.label}
-                        </div>
-                      </>
-                    )}
-                    {s.note && (
-                      <div className="absolute bottom-full left-0 mb-3 w-64 max-w-[85vw] p-3 rounded-xl bg-warm-900 border border-warm-700/50 text-xs text-warm-400 leading-relaxed opacity-0 pointer-events-none group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 shadow-xl shadow-black/30 z-50">
-                        {s.note}
-                      </div>
-                    )}
-                  </a>
-                );
-              })}
+              {heroStats.map((s, i) => (
+                <a
+                  key={i}
+                  href={s.href}
+                  className="group relative cursor-pointer max-w-[11rem]"
+                >
+                  <div className="text-2xl lg:text-3xl xl:text-4xl font-bold text-warm-100 group-hover:text-accent-400 transition-colors leading-tight tabular-nums">
+                    {s.value}
+                  </div>
+                  <div className="text-[10px] lg:text-xs text-warm-500 uppercase tracking-wider mt-1.5 leading-snug">
+                    {s.label}
+                  </div>
+                  {s.note && (
+                    <div className="absolute bottom-full left-0 mb-3 w-64 max-w-[85vw] p-3 rounded-xl bg-warm-900 border border-warm-700/50 text-xs text-warm-400 leading-relaxed opacity-0 pointer-events-none group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 shadow-xl shadow-black/30 z-50">
+                      {s.note}
+                    </div>
+                  )}
+                </a>
+              ))}
             </motion.div>
           </div>
 

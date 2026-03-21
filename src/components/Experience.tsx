@@ -8,7 +8,7 @@ export default function Experience() {
   const { ref, isInView } = useInView(0.08);
 
   return (
-    <section id="experience" className="py-24 md:py-36 section-padding" ref={ref}>
+    <section id="experience" className="py-24 md:py-32 section-padding" ref={ref}>
       <div className="max-w-7xl 2xl:max-w-[1400px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 36 }}

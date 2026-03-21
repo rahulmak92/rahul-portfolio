@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { personalInfo } from '@/data/resume';
 import { contactCopy, siteLinks } from '@/content/portfolio';
 import { useInView } from '@/hooks/useInView';
-import { Mail, Linkedin, FileDown, Calendar, Phone } from 'lucide-react';
+import { Mail, Linkedin, FileDown, Calendar } from 'lucide-react';
 
 function linkedInDisplay(url: string): string {
   try {
@@ -25,12 +25,6 @@ export default function Contact() {
       href: `mailto:${personalInfo.email}`,
     },
     {
-      icon: Phone,
-      label: 'Phone',
-      value: personalInfo.phone,
-      href: `tel:${personalInfo.phone.replace(/[^\d+]/g, '')}`,
-    },
-    {
       icon: Linkedin,
       label: 'LinkedIn',
       value: linkedInDisplay(personalInfo.linkedin),
@@ -49,7 +43,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-36 section-padding border-t border-warm-800/40"
+      className="py-24 md:py-32 section-padding border-t border-warm-800/40"
       ref={ref}
     >
       <div className="max-w-3xl mx-auto">
@@ -93,7 +87,7 @@ export default function Contact() {
             </span>
           </a>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-3 gap-3">
             {secondaryLinks.map((c) => (
               <a
                 key={c.label}
