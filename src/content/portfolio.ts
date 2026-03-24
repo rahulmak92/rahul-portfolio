@@ -244,6 +244,62 @@ export const storyArc = {
   ],
 };
 
+/* ─── Current Projects ─── */
+
+export const currentProjectsSection = {
+  kicker: 'Current projects',
+  headline: 'What I\'m tinkering with',
+  intro:
+    'Side projects where I push on ideas outside of work — mostly applied AI meeting the physical world.',
+};
+
+export type CurrentProject = {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  status: 'active' | 'experimenting' | 'paused';
+  highlights: string[];
+  tech: string[];
+  images?: { src: string; alt: string }[];
+};
+
+export const currentProjects: CurrentProject[] = [
+  {
+    id: 'homeassistant',
+    name: 'Smart Home LLM',
+    tagline: 'An LLM that runs my home',
+    description:
+      'Built on Home Assistant Green. An LLM reads data from smart bulbs, door sensors, connected Wi-Fi devices, and outdoor weather — then regulates the thermostat to balance comfort and power savings. The goal is a home that adapts without being told to.',
+    status: 'active',
+    highlights: [
+      'LLM processes live sensor data (light, door, presence, weather) to make thermostat decisions',
+      'Automated power-saving routines based on weather forecasts and occupancy patterns',
+      'Expanding into more use cases as new sensors and devices come online',
+    ],
+    tech: ['Home Assistant Green', 'LLM Integration', 'IoT Sensors', 'Automation Rules'],
+    images: [
+      { src: '/ha-dashboard-1.png', alt: 'Home Assistant dashboard — camera feeds, door sensors, soil moisture, and plant monitoring' },
+      { src: '/ha-dashboard-2.png', alt: 'Home Assistant dashboard — thermostat control, presence sensors, Deco network, and motion sensors' },
+    ],
+  },
+  {
+    id: 'openclaw',
+    name: 'OpenClaw',
+    tagline: 'Home intelligence system operated by chat',
+    description:
+      'A home system that ties together a doorbell, ReoLink camera feeds, and Deco network device tracking. OpenClaw reviews camera feeds to determine who\'s home, monitors connected devices, and generates a daily spreadsheet summarizing bills and emails. Controlled entirely via WhatsApp or Telegram messages.',
+    status: 'experimenting',
+    highlights: [
+      'Camera feed analysis to identify presence — who\'s home, who\'s not',
+      'Monitors devices on Deco network for occupancy signals',
+      'Daily auto-generated sheet: bills, emails, and household status',
+      'Operated on command via WhatsApp or Telegram',
+    ],
+    tech: ['ReoLink', 'Computer Vision', 'WhatsApp / Telegram Bot', 'Deco API', 'Spreadsheet Automation'],
+  },
+];
+
 /* ─── Contact ─── */
 
 export const contactCopy = {

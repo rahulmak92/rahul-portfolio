@@ -4,6 +4,7 @@ import SelectedWork from '@/components/SelectedWork';
 import Experience from '@/components/Experience';
 import Skills from '@/components/Skills';
 import Teaching from '@/components/Teaching';
+import CurrentProjects from '@/components/CurrentProjects';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -27,6 +28,8 @@ export default function Home() {
       <Skills />
       <div className="divider" />
       <Teaching />
+      <div className="divider" />
+      <CurrentProjects />
       <div className="divider" />
       <Education />
       <div className="divider" />
