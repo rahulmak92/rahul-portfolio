@@ -8,6 +8,7 @@ import CurrentProjects from '@/components/CurrentProjects';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         Skip to content
       </a>
       <Navbar />
+      <ThemeToggle />
       <Hero />
       <div className="divider" />
       <SelectedWork />

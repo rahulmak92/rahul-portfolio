@@ -3,6 +3,49 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --warm-50: 250 249 249;
+    --warm-100: 245 245 244;
+    --warm-200: 231 229 228;
+    --warm-300: 214 211 209;
+    --warm-400: 168 162 158;
+    --warm-500: 120 113 108;
+    --warm-600: 87 83 78;
+    --warm-700: 68 64 60;
+    --warm-800: 41 37 36;
+    --warm-900: 28 25 23;
+    --warm-950: 12 10 9;
+
+    --accent-50: 255 251 235;
+    --accent-100: 254 243 199;
+    --accent-200: 253 230 138;
+    --accent-300: 252 211 77;
+    --accent-400: 251 191 36;
+    --accent-500: 245 158 11;
+    --accent-600: 217 119 6;
+    --accent-700: 180 83 9;
+    --accent-800: 146 64 14;
+    --accent-900: 120 53 15;
+  }
+
+  .bright {
+    --warm-950: 255 255 255;
+    --warm-900: 249 250 251;
+    --warm-800: 229 231 235;
+    --warm-700: 209 213 219;
+    --warm-600: 156 163 175;
+    --warm-500: 107 114 128;
+    --warm-400: 75 85 99;
+    --warm-300: 55 65 81;
+    --warm-200: 31 41 55;
+    --warm-100: 17 24 39;
+    --warm-50: 3 7 18;
+
+    --accent-500: 217 119 6;
+    --accent-400: 180 83 9;
+    --accent-300: 146 64 14;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -10,11 +53,18 @@
   }
 
   body {
-    @apply bg-warm-950 text-warm-300;
+    background-color: rgb(var(--warm-950));
+    color: rgb(var(--warm-300));
+    transition: background-color 0.35s ease, color 0.35s ease;
   }
 
   ::selection {
     @apply bg-accent-500/30 text-white;
+  }
+
+  .bright ::selection {
+    background-color: rgba(217, 119, 6, 0.2);
+    color: rgb(17 24 39);
   }
 
   *:focus-visible {
@@ -41,12 +91,25 @@
     @apply bg-gradient-to-r from-accent-400 to-amber-300 bg-clip-text text-transparent;
   }
 
+  .bright .gradient-text {
+    background-image: linear-gradient(to right, rgb(180 83 9), rgb(217 119 6));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .card {
-    @apply bg-warm-900/50 border border-warm-800/60 rounded-2xl backdrop-blur-sm;
+    background-color: rgb(var(--warm-900) / 0.5);
+    border: 1px solid rgb(var(--warm-800) / 0.6);
+    @apply rounded-2xl backdrop-blur-sm;
   }
 
   .card-hover {
-    @apply hover:bg-warm-800/40 hover:border-warm-700/50 transition-all duration-500;
+    @apply transition-all duration-500;
+  }
+  .card-hover:hover {
+    background-color: rgb(var(--warm-800) / 0.4);
+    border-color: rgb(var(--warm-700) / 0.5);
   }
 
   .noise::before {
@@ -59,7 +122,12 @@
     z-index: 0;
   }
 
+  .bright .noise::before {
+    opacity: 0.015;
+  }
+
   .divider {
-    @apply h-px bg-gradient-to-r from-transparent via-warm-800 to-transparent;
+    @apply h-px;
+    background: linear-gradient(to right, transparent, rgb(var(--warm-800)), transparent);
   }
 }
